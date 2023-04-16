@@ -1,0 +1,67 @@
+CollectionType(System.Type)">
+            <summary>
+                Gets an <see cref="T:System.Collections.Generic.ICollection`1"/> type for the given element type.
+            </summary>
+            <param name="elementType">Type of the element.</param>
+            <returns>The collection type.</returns>
+        </member>
+        <member name="M:System.Data.Entity.Internal.DbHelpers.DatabaseName(System.Type)">
+            <summary>
+                Creates a database name given a type derived from DbContext.  This handles nested and
+                generic classes.  No attempt is made to ensure that the name is not too long since this
+                is provider specific.  If a too long name is generated then the provider will throw and
+                the user must correct by specifying their own name in the DbContext constructor.
+            </summary>
+            <param name = "contextType">Type of the context.</param>
+            <returns>The database name to use.</returns>
+        </member>
+        <member name="T:System.Data.Entity.Internal.DbLocalView`1">
+            <summary>
+                A local (in-memory) view of the entities in a DbSet.
+                This view contains Added entities and does not contain Deleted entities.  The view extends
+                from <see cref="T:System.Collections.ObjectModel.ObservableCollection`1"/> and hooks up events between the collection and the
+                state manager to keep the view in sync.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="M:System.Data.Entity.Internal.DbLocalView`1.#ctor(System.Data.Entity.Internal.InternalContext)">
+            <summary>
+                Initializes a new instance of the <see cref="T:System.Data.Entity.Internal.DbLocalView`1"/> class for entities
+                of the given generic type in the given internal context.
+            </summary>
+            <param name="internalContext">The internal context.</param>
+        </member>
+        <member name="M:System.Data.Entity.Internal.DbLocalView`1.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+                Called by the <see cref="T:System.Collections.ObjectModel.ObservableCollection`1"/> base class when the collection changes.
+                This method looks at the change made to the collection and reflects those changes in the
+                state manager.
+            </summary>
+            <param name="e">The <see cref="T:System.Collections.Specialized.NotifyCollectionChangedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:System.Data.Entity.Internal.DbLocalView`1.StateManagerChangedHandler(System.Object,System.ComponentModel.CollectionChangeEventArgs)">
+            <summary>
+                Handles events from the state manager for entities entering, leaving, or being marked as deleted.
+                The local view is kept in sync with these changes.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.ComponentModel.CollectionChangeEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:System.Data.Entity.Internal.DbLocalView`1.ClearItems">
+            <summary>
+                Clears the items by calling remove on each item such that we get Remove events that
+                can be tracked back to the state manager, rather than a single Reset event that we
+                cannot deal with.
+            </summary>
+        </member>
+        <member name="M:System.Data.Entity.Internal.DbLocalView`1.InsertItem(System.Int32,`0)">
+            <summary>
+                Adds a contains check to the base implementation of InsertItem since we can't support
+                duplicate entities in the set.
+            </summary>
+            <param name = "index">The index at which to insert.</param>
+            <param name = "item">The item to insert.</param>
+        </member>
+        <member name="P:System.Data.Entity.Internal.DbLocalView`1.BindingList">
+            <summary>
+                Returns a cached binding list implementation backed by this ObservableCollection.

@@ -1,0 +1,80 @@
+﻿@model QLtour.Models.TOUR
+
+@{
+    ViewBag.Title = "ThemTour";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+@using (Html.BeginForm("ThemTour", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>TOUR</legend>
+        @*=============================Ma Tour==================================*@
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MaTour)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MaTour)
+            @Html.ValidationMessageFor(model => model.MaTour)
+        </div>
+        @*==============================Ngay BD=================================*@
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NgayBD)
+        </div>
+        <div class="editor-field">
+            <input type="date" name="NgayBD" />
+            @Html.ValidationMessageFor(model => model.NgayBD)
+        </div>
+        @*=============================Ngay KT==================================*@
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NgayKT)
+        </div>
+        <div class="editor-field">
+            <input type="date" name="NgayKT" />
+            @Html.ValidationMessageFor(model => model.NgayKT)
+        </div>
+        @*============================Diem Xuat Phat===================================*@
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DiemXuatPhat)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DiemXuatPhat)
+            @Html.ValidationMessageFor(model => model.DiemXuatPhat)
+        </div>
+        @*=============================Ma HDV==================================*@
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MaHDV)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MaHDV)
+            @Html.ValidationMessageFor(model => model.MaHDV)
+        </div>
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.MaHDV)
+            <div class="editor-field">
+                @Html.DropDownList("MaNV")
+            </div>
+        </div>*@
+        @*==============================Ma Dia Danh=================================*@
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MaDiaDanh)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MaDiaDanh)
+            @Html.ValidationMessageFor(model => model.MaDiaDanh)
+        </div>
+        @*============================Sumit===================================*@
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

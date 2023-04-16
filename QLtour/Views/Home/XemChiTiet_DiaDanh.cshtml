@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "XemChiTiet_DiaDanh";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var ha = ViewBag.DTQ;
+    var ten = ViewBag.TDD;
+    var gia = ViewBag.Gia;
+    var s = 1;
+}
+@using QLtour.Models;
+@model List<TOUR>
+
+<link href="~/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <h2 style="text-align:center" class="mt-3 mb-3">CHI TIẾT ĐỊA DANH</h2>
+    </div>
+    @foreach (var i in Model)
+    {
+        <div class="border-bottom border-info mb-3">
+            <div class="row mb-3">
+
+                <div class="col-3">
+                    <img src="/HinhAnhDD/@ha" width="250" height="auto" />
+                </div>
+                <div class="col-9">
+                    <form action="/Home/XL_ChonMua" method="post">
+                        <p>Tên địa danh: @ten</p>
+                        <p>Ngày bắt đầu: @i.NgayBD</p>
+                        <br />
+                        <p>Ngày kết thúc: @i.NgayKT</p>
+                        <br />
+                        <p>Điểm xuất phát: @i.DiemXuatPhat</p>
+                        <br />
+                        <p>Chi phí đầu người: @gia</p>
+                        <br />
+                        <p>Số lượng còn: @i.SoLuongCon</p>
+                        <br />
+                        <p>Tình trạng: @i.TinhTrang</p>
+                        <br />
+                        <input name="id" value="@i.MaDiaDanh" hidden />
+                        <input name="tendd" value="@ten" hidden />
+                        <input name="hinhanh" value="@ha" hidden />
+                        <p>Chọn số lượng mua</p>
+
+                        <select name="SLM">
+                            @for (int z = 1; z < @i.SoLuongCon.Value + 1; z++)
+                            {
+                                <option value="@z">@z</option>
+                            }
+                        </select>
+                        <input type="submit" name="chonmuasl" value="Chọn mua" class="bg-info" />
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

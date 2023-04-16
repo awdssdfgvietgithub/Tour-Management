@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+
+
+<div style="text-align: center" class="mt-4 mb-4">
+    <h2>Đăng nhập</h2>
+    <form action="/Home/DangNhap" method="post">
+        <label for="tk">Tài khoản:</label>
+        <input type="text" id="txtTK" name="txtTK" placeholder="Tài khoản" /><br /><br />
+        <label for="mk">Mật khẩu:</label>
+        <input type="password" id="txtMK" name="txtMK" placeholder="Mật khẩu" /><br />
+        <label for="mk_nv">Employee:</label>
+        <input type="checkbox" id="ck_nv" name="ck_nv" value="1" />
+        <input type="submit" value="Đăng nhập" />
+    </form>
+</div>

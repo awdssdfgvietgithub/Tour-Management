@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "QuanLyVe";
+    Layout = "~/Views/Shared/_LayoutQuanLy.cshtml";
+}
+@using QLtour.Models
+@model List<VE>
+<link href="~/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<h2>Quản lý vé</h2>
+
+<a href="/QuanLy/ThemV">Thêm vé</a>
+
+<div class="container">
+    <div class="row">
+        <table class="table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>Mã vé</th>
+                    <th>Ngày book</th>
+                    <th>Chi phí đầu người</th>
+                    <th></th>
+                    <th>Mã tour</th>
+                    <th>Mã khách hàng</th>
+                </tr>
+            </thead>
+
+            @foreach (var s in Model)
+            {
+                <tr>
+                    <td>@s.MaVe</td>
+                    <td>@s.NgayBook</td>
+                    <td>@s.ChiPhiDauNguoi<td>
+                    <td>@s.MaTour</td>
+                    <td>@s.MaKH</td>
+                    <td>
+                        <a href="/QuanLy/SuaV/@s.MaVe">Sửa</a>
+                        <a href="/QuanLy/XoaV/@s.MaVe">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "XemGioHang";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@model IEnumerable<QLtour.Models.Item>
+@using QLtour.Models;
+
+<h2>XemGioHang</h2>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Mã địa danh
+            </th>
+            <th>
+                Tên địa danh
+            </th>
+            <th>
+                Ảnh địa danh
+            </th>
+            <th>
+                Giá tiền
+            </th>
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Thành tiền
+            </th>
+        </tr>
+    </thead>
+    <body>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>
+                    @item.MaDD
+                </th>
+                <th>
+                    @item.TenDD
+                </th>
+                <th>
+                    <img src="~/HinhAnhDD/@item.AnhDD" width="100px" />
+                </th>
+                <th>
+                    @item.GiaBan
+                </th>
+                <th>
+                    @item.SoLuongMua
+                </th>
+                <th>
+                    @item.ThanhTien
+                </th>
+                <td>
+                    <a href="/Home/Xoa/@item.MaDD"> Xóa </a>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                Tổng số lượng: @{
+                    GioHang cc = (GioHang)Session["gh"];
+                    if (cc == null)
+                    {
+                        <span>0</span>
+                    }
+                    else
+                    {
+                        <span>@cc.TongSL()</span>
+                    }
+                }
+            </td>
+            <td>
+                Tổng tiền: @{
+                    GioHang gio = (GioHang)Session["gh"];
+                    if (gio == null)
+                    {
+                        <span>0</span>
+                    }
+                    else
+                    {
+                        <span>@gio.TongTien()</span>
+                    }
+                }
+            </td>
+        </tr>
+    </body>
+</table>

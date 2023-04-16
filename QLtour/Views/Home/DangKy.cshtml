@@ -1,0 +1,97 @@
+﻿@model QLtour.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>DangKy</h2>
+
+@using (Html.BeginForm("DangKy", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Thêm khách hàng mới</legend>
+        <form>
+            <div class="form-group">
+                @Html.LabelFor(model => model.MaKH)
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.MaKH)
+                    @Html.ValidationMessageFor(model => model.MaKH)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HoTen)
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.HoTen)
+                    @Html.ValidationMessageFor(model => model.HoTen)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NgSinh)
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.NgSinh)
+                    @Html.ValidationMessageFor(model => model.NgSinh)
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Phai)
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Phai)
+                    @Html.ValidationMessageFor(model => model.Phai)
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SDT)
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.SDT)
+                    @Html.ValidationMessageFor(model => model.SDT)
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email)
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CCCD)
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.CCCD)
+                    @Html.ValidationMessageFor(model => model.CCCD)
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MATKHAU)
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.MATKHAU)
+                    @Html.ValidationMessageFor(model => model.MATKHAU)
+                </div>
+            </div>
+
+
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </form>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to DanhNhap", "DangNhap")
+</div>

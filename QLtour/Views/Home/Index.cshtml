@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@using QLtour.Models
+@model List<DIEMTHAMQUAN>
+<link href="~/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<div class="container">
+    <div class="row text-center">
+        <h2 style="text-align:center" class="mt-3 mb-3">DANH SÁCH ĐIỂM THAM QUAN</h2>
+    </div>
+    <div class="row">
+        <form action="/Home/Index" method="post">
+            <label for="Search">Tìm kiếm:</label>
+            <input type="search" name="search" placeholder="Tìm kiếm tên địa danh" />
+            <button type="submit" class="btn btn-primary mx-2">
+                <svg width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                </svg>
+            </button>
+        </form>
+    </div>
+    <div class="row  product-group ">
+        @foreach (var s in Model)
+        {
+            <div class="col-4 col-sm-3 col-md-3 p-2 ">
+                <div class="card h-100 text-center card-group border-secondary" style="border: 4px solid">
+                    <img class=" card-img-top text-center h-50 w-100 " src="/HinhAnhDD/@s.HinhAnh" />
+                    <div class="card-body">
+                        <p class="card-title">@s.TenDiaDanh</p>
+                        <a href="/Home/XemChiTiet_DiaDanh/@s.MaDiaDanh" class="btn btn-info"> Xem Chi Tiết </a>
+                    </div>
+                </div>
+            </div>
+            <br />
+        }
+    </div>
+</div>

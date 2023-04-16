@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "QuanLyDD";
+    Layout = "~/Views/Shared/_LayoutQuanLy.cshtml";
+}
+@using QLtour.Models
+@model List<DIEMTHAMQUAN>
+<link href="~/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<h2>Quản lý địa điểm du lịch</h2>
+
+<a href="/QuanLy/ThemDD">Thêm địa danh</a>
+
+<div class="container">
+    <div class="row">
+        <table class="table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>Mã địa danh</th>
+                    <th>Tên địa danh</th>
+                    <th>Địa chỉ</th>
+                    <th>Hình ảnh</th>
+                    <th>Đặc trưng</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            @foreach (var s in Model)
+            {
+
+                <tr>
+                    <td>@s.MaDiaDanh</td>
+                    <td>@s.TenDiaDanh</td>
+                    <td>@s.Diachi</td>
+                    <td><img src="/HinhAnhDD/@s.HinhAnh" width="100px" height="150px" /></td>
+                    <td>@s.DacTrung</td>
+                    <td>@s.MaDiaDanh</td>
+                    <td>
+                        <a href="/QuanLy/SuaDD/@s.MaDiaDanh">Sửa</a>
+                        <a href="/QuanLy/XoaDD/@s.MaDiaDanh">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+

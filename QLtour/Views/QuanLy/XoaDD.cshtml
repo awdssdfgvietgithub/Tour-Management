@@ -1,0 +1,67 @@
+﻿@model QLtour.Models.DIEMTHAMQUAN
+
+@{
+    ViewBag.Title = "XoaDD";
+    Layout = "~/Views/Shared/_LayoutQuanLy.cshtml";
+}
+
+<h2>XoaDD</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>DIEMTHAMQUAN</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TenDiaDanh)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenDiaDanh)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Diachi)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Diachi)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HinhAnh)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HinhAnh)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DacTrung)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DacTrung)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ChiPhi)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ChiPhi)
+    </div>
+</fieldset>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" />
+        @{
+            if(Session["baoloi"] != null)
+            {
+                <span>@Session["baoloi"]</span>
+            }
+            else
+            {
+                <span></span>
+            }
+        } |
+        @Html.ActionLink("Back to List", "QuanLyDD")
+    </p>
+}

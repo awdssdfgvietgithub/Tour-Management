@@ -1,0 +1,64 @@
+﻿@model QLtour.Models.DIEMTHAMQUAN
+
+@{
+    ViewBag.Title = "ThemDD";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+
+@using (Html.BeginForm("ThemDD", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>DIEMTHAMQUAN</legend>
+
+        <div class="editor-label">
+        @Html.LabelFor(model => model.MaDiaDanh)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MaDiaDanh)
+            @Html.ValidationMessageFor(model => model.MaDiaDanh)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TenDiaDanh)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TenDiaDanh)
+            @Html.ValidationMessageFor(model => model.TenDiaDanh)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ChiPhi)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ChiPhi)
+            @Html.ValidationMessageFor(model => model.ChiPhi)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Diachi)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Diachi)
+            @Html.ValidationMessageFor(model => model.Diachi)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HinhAnh)
+            <div class="editor-field">
+                <input type="file" name="fileupload" />
+                @ViewBag.ThongBao
+            </div>
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

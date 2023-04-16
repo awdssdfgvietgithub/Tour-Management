@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "TimKiem";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+<form action="/Home/XL_TimKiemNC" method="post">
+    <div class="bg-image" style="background-image: url('/HinhAnhDD/timkiemnc.jpg'); width: 960px; height: 480px">
+        <br /><br />
+        <h2 class="text-danger mt-4 ml-5"><b>TÌM KIẾM TOUR</b></h2><br /><br /><br />
+        <input type="text" name="txtdiachi" placeholder="Bạn muốn đi đâu?" size="40" class="ml-2" /><br /><br /><br />
+        <input type="text" name="txtchude" placeholder="Chủ đề chuyến đi" size="40" class="ml-2" /><br /><br /><br />
+        <input type="submit" name="timkiem" value="Tìm kiếm" class="ml-5" />
+    </div>
+</form>
